@@ -5,6 +5,9 @@
 
 Este documento descreve o **padrão de respostas** adotado na API `SistemaTarefas`. Ele padroniza o retorno de dados, mensagens e códigos, facilitando o consumo por frontends e garantindo consistência em todos os controllers.
 
+📄 Você pode conferir o manual da arquitetura do sistema:  
+[Manual de Arquitetura da API](Manual%20de%20Arquitetura%20da%20API.pdf)
+
 ---
 
 ## Índice
