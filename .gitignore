@@ -1,0 +1,58 @@
+# ===============================================
+# Ignore padrões do .NET / C#
+# ===============================================
+
+# Compilação
+**/bin/
+**/obj/
+**/publish/
+
+# Logs e arquivos temporários
+**/logs/
+**/*.log
+
+# Arquivos de usuário / IDE
+**/*.user
+**/*.suo
+.vs/
+.idea/
+.vscode/
+
+# Pacotes NuGet
+**/*.nupkg
+**/*.snupkg
+**/packages/
+
+# Backups e temporários
+**/*.bak
+**/*.backup
+
+# Configurações sensíveis
+**/appsettings.*.json
+!**/appsettings.Development.json   # <- mantém o de desenvolvimento, se quiser
+# (remova a linha acima se quiser ignorar todos)
+
+# Arquivos de build / depuração
+**/*.dbmdl
+**/*.pdb
+**/*.exe
+**/*.dll
+
+# Documentos não relacionados ao código
+**/*.doc
+**/*.docx
+**/*.tmp
+
+# Certificado
+**/*.pfx
+**/*.crt
+**/*.key
+
+# OpenAPI Generator / Swagger temporários
+**/.openapi-generator/
+**/.openapi-generator-ignore
+**/swagger.json
+
+# ===============================================
+# Fim do .gitignore
+# ===============================================
