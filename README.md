@@ -1,6 +1,9 @@
 # SistemaTarefas API
 
 [![.NET](https://img.shields.io/badge/.NET-9.0-blue)](https://dotnet.microsoft.com/)
+![API](https://img.shields.io/badge/API-RESTful-blue?style=flat-square)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange?style=flat-square)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 Este documento descreve o **padrão de respostas** adotado na API `SistemaTarefas`. Ele padroniza o retorno de dados, mensagens e códigos, facilitando o consumo por frontends e garantindo consistência em todos os controllers.
