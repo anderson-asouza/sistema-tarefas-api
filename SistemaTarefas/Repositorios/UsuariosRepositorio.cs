@@ -28,7 +28,8 @@ namespace SistemaTarefas.Repositorios
         IServiceProvider _serviceProvider,
         SistemaTarefasDBContex _dbContext,
         IMapper _mapper,
-        IWebHostEnvironment _env
+        IWebHostEnvironment _env,
+        BancoConfiguracao _configBanco
     ) : IUsuariosRepositorio
     {
         public async Task<bool> ExisteAlgumAdmin()
@@ -193,7 +194,7 @@ namespace SistemaTarefas.Repositorios
                 }
 
                 Usuarios usuario = _mapper.Map<Usuarios>(usuarioRequest);
-                usuario.UsuDataMudancaSenha = DateTime.Now.Date.AddDays( -(Servico.EXPIRACAO_SENHA_DIAS +1));
+                usuario.UsuDataMudancaSenha = DateTime.Now.Date.AddDays( -(_configBanco.ExpiracaoSenhaDias +1));
                 usuario.UsuSenha = BCrypt.Net.BCrypt.HashPassword(usuarioRequest.UsuSenha);
                 usuario.UsuImagemPerfil = "";
 
@@ -433,7 +434,7 @@ namespace SistemaTarefas.Repositorios
                 usuario.UsuSenha = BCrypt.Net.BCrypt.HashPassword(NovaSenha);
 
                 _dbContext.Usuarios.Update(usuario);
-                usuario.UsuDataMudancaSenha = (trocarSenhaPeloAdm) ? DateTime.Now.Date.AddDays(-(Servico.EXPIRACAO_SENHA_DIAS +1)) : DateTime.Now.Date;
+                usuario.UsuDataMudancaSenha = (trocarSenhaPeloAdm) ? DateTime.Now.Date.AddDays(-(_configBanco.ExpiracaoSenhaDias +1)) : DateTime.Now.Date;
                 await _dbContext.SaveChangesAsync();
 
                 if (trocarSenhaPeloAdm)
@@ -518,7 +519,7 @@ namespace SistemaTarefas.Repositorios
                     };
                 }
 
-                if (string.IsNullOrWhiteSpace(NovaSenha) && DateTime.Now.Date > usuario.UsuDataMudancaSenha.AddDays(Servico.EXPIRACAO_SENHA_DIAS))
+                if (string.IsNullOrWhiteSpace(NovaSenha) && DateTime.Now.Date > usuario.UsuDataMudancaSenha.AddDays(_configBanco.ExpiracaoSenhaDias))
                 {
                     return new UsuarioLoginResponse
                     {

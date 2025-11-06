@@ -31,9 +31,11 @@ namespace SistemaTarefas.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly IUsuariosRepositorio _usuarioRepositorio;
-        public UsuariosController(IUsuariosRepositorio usuarioRepositorio)
+        private readonly TokenConfiguracao _configToken;
+        public UsuariosController(IUsuariosRepositorio usuarioRepositorio, TokenConfiguracao configToken)
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _configToken = configToken;
         }
 
         private bool ValidaRequisicao(UsuarioResponse resposta,  int id, int nivel, string? nome = null, string? matricula = null, string? email = null, string? login = null, string? senhaInicial = null)
@@ -419,7 +421,8 @@ namespace SistemaTarefas.Controllers
                     return Controladores.Retorno(this, usuario);
                 }
 
-                usuario.usuToken = Servico.GerarTokenJWT(usuario.usuId, usuario.usuNivel).ToString();
+                usuario.usuToken = Servico.GerarTokenJWT(_configToken, usuario.usuId, usuario.usuNivel);
+                //usuario.usuToken = Servico.GerarTokenJWT(usuario.usuId, usuario.usuNivel).ToString();
 
                 return Controladores.Retorno(this, usuario);
             }

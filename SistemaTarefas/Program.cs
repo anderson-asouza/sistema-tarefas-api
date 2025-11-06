@@ -21,6 +21,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using SistemaTarefas.Util;
 
 namespace SistemaTarefas
 {
@@ -40,6 +41,21 @@ namespace SistemaTarefas
 
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Configuration
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            builder.Services.AddSingleton<ServidorConfiguracao>();
+            builder.Services.AddSingleton<TokenConfiguracao>();
+            builder.Services.AddSingleton<BancoConfiguracao>();
+
+            var configServidor = builder.Configuration.GetSection("Servidor").Get<ServidorConfiguracao>();
+            var configToken = builder.Configuration.GetSection("Token").Get<TokenConfiguracao>();
+            builder.Services.AddSingleton(configToken!);
+            var configBanco = builder.Configuration.GetSection("Banco").Get<BancoConfiguracao>();
+
             builder.Host.UseSerilog();
             #endregion
 
@@ -52,14 +68,13 @@ namespace SistemaTarefas
 
                 });
 
-                //options.ListenAnyIP(5000); // HTTP
+                //options.ListenAnyIP(configServidor!.PortaHttp); // HTTP
 
-                options.ListenAnyIP(Servico.PORTA_HTTPS, listenOptions =>
+                options.ListenAnyIP(configServidor!.PortaHttps, listenOptions =>
                 {
-                    listenOptions.UseHttps(Servico.PATH_CETIFICADO_PFX, Servico.CHAVE_HTTPS);//listenOptions.UseHttps();// vazio para sem senha e sem certificado.
+                    listenOptions.UseHttps(configServidor.PathCertificadoPfx, configServidor.ChaveHttps);//listenOptions.UseHttps();// vazio para sem senha e sem certificado.
                 });
             });
-
 
             builder.Services.AddEndpointsApiExplorer();
 
@@ -100,7 +115,7 @@ namespace SistemaTarefas
             {
                 options.AddPolicy("DefaultCorsPolicy", policy =>
                 {
-                    policy.WithOrigins(Servico.SERVIDOR_ORIGEM_1, Servico.SERVIDOR_ORIGEM_2)
+                    policy.WithOrigins(configServidor!.ServidorOrigem1, configServidor.ServidorOrigem2)
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -124,7 +139,7 @@ namespace SistemaTarefas
 
             builder.Services.AddEntityFrameworkSqlServer()
                 .AddDbContext<SistemaTarefasDBContex>(
-                options => options.UseSqlServer(Servico.CONNECTION_STRING)
+                options => options.UseSqlServer(configBanco!.ConnectionString)
             );
 
             builder.Services.AddScoped<ITarefasRepositorio, TarefasRepositorio>();
@@ -209,9 +224,9 @@ namespace SistemaTarefas
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Servico.NOME_EMPRESA_TOKEN,
-                    ValidAudience = Servico.NOME_APLICACAO_TOKEN,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Servico.CHAVE_SECRETA_TOKEN)),
+                    ValidIssuer = configToken!.NomeEmpresa,
+                    ValidAudience = configToken.NomeAplicacao,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configToken!.ChaveSecreta)),
                     ClockSkew = TimeSpan.FromMinutes(5)
                 };
 
