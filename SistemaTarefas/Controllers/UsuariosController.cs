@@ -198,7 +198,7 @@ namespace SistemaTarefas.Controllers
                     }
                 }
 
-                if (ValidaRequisicao(resposta, 0, usuarioRequest.usuNivel, usuarioRequest.usuNome, usuarioRequest.usuMatricula, usuarioRequest.usuEmail, usuarioRequest.usuLogin, usuarioRequest.UsuSenha))
+                if (!ValidaRequisicao(resposta, 0, usuarioRequest.usuNivel, usuarioRequest.usuNome, usuarioRequest.usuMatricula, usuarioRequest.usuEmail, usuarioRequest.usuLogin, usuarioRequest.UsuSenha))
                 {
                     return Controladores.Retorno(this, resposta);
                 }
@@ -237,7 +237,7 @@ namespace SistemaTarefas.Controllers
                 if (idUsuario < 1)
                     return Controladores.Retorno(this, new UsuarioResponse(), ResponseCode.BadRequest, "Id irregular para solicitação.");
 
-                if (ValidaRequisicao(resposta, idUsuario, usuarioRequest.usuNivel, usuarioRequest.usuNome, usuarioRequest.usuMatricula, usuarioRequest.usuEmail))
+                if (!ValidaRequisicao(resposta, idUsuario, usuarioRequest.usuNivel, usuarioRequest.usuNome, usuarioRequest.usuMatricula, usuarioRequest.usuEmail))
                 {
                     return Controladores.Retorno(this, resposta);
                 }

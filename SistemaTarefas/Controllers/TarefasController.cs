@@ -164,7 +164,7 @@ namespace SistemaTarefas.Controllers
                     return Controladores.Retorno(this, resposta, ResponseCode.BadRequest, "Requisição inválida. Tarefa deve se associada a um Modelo de Tarefa.");
                 }
 
-                if (ValidaRequisicao(resposta, tarefa.TarNomeTarefa, tarefa.TarDescricao))
+                if (!ValidaRequisicao(resposta, tarefa.TarNomeTarefa, tarefa.TarDescricao))
                 {
                     return Controladores.Retorno(this, resposta);
                 }
@@ -209,7 +209,7 @@ namespace SistemaTarefas.Controllers
                     return Controladores.Retorno(this, resposta, ResponseCode.BadRequest, "Parâmetros incorretos para atualizar o registro.");
                 }                
 
-                if (ValidaRequisicao(resposta, tarefaUpdRequest.TarNomeTarefa, tarefaUpdRequest.TarDescricao))
+                if (!ValidaRequisicao(resposta, tarefaUpdRequest.TarNomeTarefa, tarefaUpdRequest.TarDescricao))
                 {
                     return Controladores.Retorno(this, resposta);
                 }
