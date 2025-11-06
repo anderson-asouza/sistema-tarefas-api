@@ -11,6 +11,9 @@
 **/logs/
 **/*.log
 
+# Migrations
+**/Migrations/
+
 # Arquivos de usuário / IDE
 **/*.user
 **/*.suo
@@ -28,9 +31,9 @@
 **/*.backup
 
 # Configurações sensíveis
-**/appsettings.*.json
-!**/appsettings.Development.json   # <- mantém o de desenvolvimento, se quiser
-# (remova a linha acima se quiser ignorar todos)
+**/appsettings.Development.json
+**/appsettings.Production.json
+
 
 # Arquivos de build / depuração
 **/*.dbmdl

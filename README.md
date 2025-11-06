@@ -1,6 +1,7 @@
 # SistemaTarefas API
 
 [![.NET](https://img.shields.io/badge/.NET-9.0-blue)](https://dotnet.microsoft.com/)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
 ![API](https://img.shields.io/badge/API-RESTful-blue?style=flat-square)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange?style=flat-square)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
@@ -10,6 +11,17 @@ Este documento descreve o **padrão de respostas** adotado na API `SistemaTarefa
 
 📄 Você pode conferir o manual da arquitetura do sistema:  
 [Manual de Arquitetura da API](Manual%20de%20Arquitetura%20da%20API.pdf)
+
+Credenciais iniciais do usuário Administrador
+
+login: **admin**
+
+senha: **senha123456**
+
+> ⚙️ **Observação:**
+> Arquivo `appsettings.json` é apenas um modelo de configuração para ambiente local.  
+> Altere as chaves e conexões antes de usar.
+
 
 ---
 
@@ -258,12 +270,12 @@ Qualquer padrão novo requer documentação. Com Retorno e RetornoLista, o uso �
 
 **Q:** Por que não deixar o HTTP status indicar sucesso/falha?
 
-**A:** O booleano OK é mais direto para frontends e facilita o consumo via AJAX ou fetch.
+    A: O booleano OK é mais direto para frontends e facilita o consumo via AJAX ou fetch.
 
 **Q:** Isso não duplica a semântica do HTTP status?
 
-**A:** Não, ele apenas enriquece: o HTTP status segue no cabeçalho e RC/RM no corpo oferecem informações legíveis e traduzíveis.
+    A: Não, ele apenas enriquece: o HTTP status segue no cabeçalho e RC/RM no corpo oferecem informações legíveis e traduzíveis.
 
 **Q:** Pode confundir novos desenvolvedores?
 
-**A:** Qualquer padrão novo requer documentação. Este é simples, claro e reforçado com exemplos e middleware de exceção. Inclusive esta é uma documentação.
+    A: Qualquer padrão novo requer documentação. Este é simples, claro e reforçado com exemplos e middleware de exceção. Inclusive esta é uma documentação.
