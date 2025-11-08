@@ -55,6 +55,7 @@ namespace SistemaTarefas
             var configToken = builder.Configuration.GetSection("Token").Get<TokenConfiguracao>();
             builder.Services.AddSingleton(configToken!);
             var configBanco = builder.Configuration.GetSection("Banco").Get<BancoConfiguracao>();
+            builder.Services.AddSingleton(configBanco!);
 
             builder.Host.UseSerilog();
             #endregion
