@@ -7,11 +7,17 @@
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Este documento descreve os **práticas adotadas** na API `SistemaTarefas`. Desenvolvida com **técnicas robustas**, esta API padroniza o retorno de dados, mensagens e códigos, facilitando o consumo por frontends e garantindo consistência em todos os controllers.
+**API RESTful robusta em C# (.NET), criada para gerenciar Tarefas e Trâmites de forma padronizada e escalável.**
 
-Implementada no padrão Code First, com migrations do Entity Framework Core.
+Retorna respostas consistentes e legíveis (`OK`, `RC`, `errorCode`) facilitando o consumo por frontends como React.js.
 
-📄 Você pode conferir o manual da arquitetura do sistema:  
+Inclui autenticação JWT, implementada no padrão Code First, com migrations do Entity Framework Core, exemplos prontos e documentação via Swagger.
+
+Projetada para ser **flexível, confiável e de fácil manutenção**, ideal para sistemas profissionais.
+
+> A documentação da API foi gerada utilizando Swagger e exportada para o formato Markdown (MD) para facilitar o compartilhamento e a manutenção do conteúdo.
+
+📄 Você também pode conferir o manual da arquitetura do sistema:  
 [Manual de Arquitetura da API](Manual%20de%20Arquitetura%20da%20API.pdf)
 
 🔐 **Credenciais iniciais do usuário Administrador**  
@@ -27,6 +33,25 @@ senha: `senha123456`
 > Arquivo `appsettings.json` é apenas um modelo de configuração para ambiente local.  
 > Altere as chaves e conexões antes de usar.
 
+
+---
+
+## 🔗 Projetos relacionados
+
+**Esta API faz parte do ecossistema SistemaTarefas, desenvolvida em C# (.NET), seguindo princípios de arquitetura limpa, segurança, validação de entrada, e documentação via Swagger. O objetivo é fornecer uma base sólida e escalável para consumo por diferentes frontends — como o desenvolvido em React.js.**
+
+| 🧩 Projeto | 💬 Descrição | 📁 Repositório|
+|----------|------------|-------------|
+| **API** | API RESTful desenvolvida em **C# (.NET)**, responsável por fornecer os dados e a lógica de negócio. | *(Este projeto)* |
+| **Frontend** | Aplicação em **React.js** que consome a API e fornece a interface web para o usuário. | [SistemaTarefas Frontend](https://github.com/anderson-asouza/sistema-tarefas-react) |
+| **Robot** | Automação em **Selenium** que interage com o frontend para automatização de testes e tarefas. | *(Em breve)* |
+
+
+> 💡 Observação: Você pode testar a API diretamente pelo Swagger ou Postman.
+>
+> Para uma experiência mais completa, utilize junto com o frontend.
+>
+> O Robot depende do frontend estar acessível para realizar as automações.
 
 ---
 
