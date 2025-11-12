@@ -1,11 +1,12 @@
 # SistemaTarefas API
 
-[![.NET](https://img.shields.io/badge/.NET-9.0-blue)](https://dotnet.microsoft.com/)
-![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=csharp&logoColor=white)
-![API](https://img.shields.io/badge/API-RESTful-blue?style=flat-square)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange?style=flat-square)
-![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+[![.NET](https://img.shields.io/badge/.NET-10.0-blue?style=flat-square&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![C#](https://img.shields.io/badge/C%23-6e6e6e?style=flat-square&logo=csharp&logoColor=white)]()
+[![API REST](https://img.shields.io/badge/API-RESTful-blue?style=flat-square)]()
+[![Auth JWT](https://img.shields.io/badge/Auth-JWT-orange?style=flat-square)]()
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)]()
+[![License MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 **API RESTful robusta em C# (.NET), criada para gerenciar Tarefas de forma padronizada e escalável.**
 
