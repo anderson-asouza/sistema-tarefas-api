@@ -7,36 +7,11 @@
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-**API RESTful robusta em C# (.NET), criada para gerenciar Tarefas e Trâmites de forma padronizada e escalável.**
-
-Retorna respostas consistentes e legíveis (`OK`, `RC`, `errorCode`) facilitando o consumo por frontends como React.js.
+**API RESTful robusta em C# (.NET), criada para gerenciar Tarefas de forma padronizada e escalável.**
 
 Inclui autenticação JWT, implementada no padrão Code First, com migrations do Entity Framework Core, exemplos prontos e documentação via Swagger.
 
-Projetada para ser **flexível, confiável e de fácil manutenção**, ideal para sistemas profissionais.
-
-> A documentação da API foi gerada utilizando Swagger e exportada para o formato Markdown (MD) para facilitar o compartilhamento e a manutenção do conteúdo.
-
-📄 Você também pode conferir o manual da arquitetura do sistema:  
-[Manual de Arquitetura da API](Manual%20de%20Arquitetura%20da%20API.pdf)
-
-🔐 **Credenciais iniciais do usuário Administrador**  
-(*Obrigatório alterar a senha no primeiro login*)
-
-
-login: `admin`
-
-senha: `senha123456`
-
-
-> ⚙️ **Observação:**
-> Arquivo `appsettings.json` é apenas um modelo de configuração para ambiente local.  
-> Altere as chaves e conexões antes de usar.
-
-
----
-
-## 🔗 Projetos relacionados
+## 🔗 API com Projetos relacionados
 
 **Esta API faz parte do ecossistema SistemaTarefas, desenvolvida em C# (.NET), seguindo princípios de arquitetura limpa, segurança, validação de entrada, e documentação via Swagger. O objetivo é fornecer uma base sólida e escalável para consumo por diferentes frontends — como o desenvolvido em React.js.**
 
@@ -52,6 +27,13 @@ senha: `senha123456`
 > Para uma experiência mais completa, utilize junto com o frontend.
 >
 > O Robot depende do frontend estar acessível para realizar as automações.
+
+Projetada para ser **flexível, confiável e de fácil manutenção**, ideal para sistemas profissionais.
+
+> A documentação da API foi gerada utilizando Swagger e exportada para o formato Markdown (MD) para facilitar o compartilhamento e a manutenção do conteúdo.
+
+📄 Você também pode conferir o manual da arquitetura do sistema:  
+[Manual de Arquitetura da API](Manual%20de%20Arquitetura%20da%20API.pdf)
 
 ---
 
@@ -80,6 +62,17 @@ senha: `senha123456`
 Este projeto é uma API para Tarefas. O objetivo é demonstrar uma API robusta com técnicas profissionais.
 
 Cada Tarefa é composta de vários trâmites. As Tarefas e Trâmites seguem Modelos que devem ser cadastrados antes.
+
+🔐 **Credenciais iniciais do usuário Administrador definidas já no migrations do Entity Framework Core**  
+(*Obrigatório alterar a senha no primeiro login*)
+
+login: `admin`
+
+senha: `senha123456`
+
+> ⚙️ **Observação:**
+> Arquivo `appsettings.json` é apenas um modelo de configuração para ambiente local.  
+> Altere as chaves e conexões antes de usar.
 
 **Pontos fortes:**
 - **Padronização de respostas**: todas as respostas seguem o mesmo modelo (`IResponseModel`), facilitando o consumo pelo frontend.
