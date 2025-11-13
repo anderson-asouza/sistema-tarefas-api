@@ -12,11 +12,11 @@
 
 Inclui autenticação JWT, implementada no padrão Code First, com migrations do Entity Framework Core, exemplos prontos e documentação via Swagger.
 
-## 🔗 API com Projetos relacionados
+## API com Projetos relacionados
 
 **Esta API faz parte do ecossistema SistemaTarefas, desenvolvida em C# (.NET), seguindo princípios de arquitetura limpa, segurança, validação de entrada, e documentação via Swagger. O objetivo é fornecer uma base sólida e escalável para consumo por diferentes frontends — como o desenvolvido em React.js.**
 
-| 🧩 Projeto | 💬 Descrição | 📁 Repositório|
+| 🧩 Projetos | 💬 Descrição | 📁 Repositório|
 |----------|------------|-------------|
 | **API** | API RESTful desenvolvida em **C# (.NET)**, responsável por fornecer os dados e a lógica de negócio. | *(Este projeto)* |
 | **Frontend** | Aplicação em **React.js** que consome a API e fornece a interface web para o usuário. | [SistemaTarefas Frontend](https://github.com/anderson-asouza/sistema-tarefas-react) |
