@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Serilog;
 using Serilog.Events;
 using SistemaTarefas.Controllers;
@@ -17,11 +17,11 @@ using SistemaTarefas.Models;
 using SistemaTarefas.Repositorios;
 using SistemaTarefas.Repositorios.Interfaces;
 using SistemaTarefas.Servicos;
+using SistemaTarefas.Util;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using SistemaTarefas.Util;
 
 namespace SistemaTarefas
 {
@@ -79,36 +79,36 @@ namespace SistemaTarefas
 
             builder.Services.AddEndpointsApiExplorer();
 
-            builder.Services.AddSwaggerGen(c =>
+            builder.Services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sistema API", Version = "v1" });
-
-                c.MapType<IFormFile>(() => new Microsoft.OpenApi.Models.OpenApiSchema
+                options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Type = "string",
+                    Title = "Sistema API",
+                    Version = "v1",
+                    Description = "API de exemplo com JWT"
+                });
+
+                options.MapType<IFormFile>(() => new OpenApiSchema
+                {
+                    Type = JsonSchemaType.String,
                     Format = "binary"
                 });
 
-                var securitySchema = new OpenApiSecurityScheme
+                var securityScheme = new OpenApiSecurityScheme
                 {
-                    Name = "JWT Autentication",
-                    Description = "Entre com o JWT Bearer Token",
-                    In = ParameterLocation.Header,
+                    Name = "Authorization",
                     Type = SecuritySchemeType.Http,
                     Scheme = "bearer",
                     BearerFormat = "JWT",
-                    Reference = new OpenApiReference
-                    {
-                        Id = JwtBearerDefaults.AuthenticationScheme,
-                        Type = ReferenceType.SecurityScheme
-                    }
-
+                    In = ParameterLocation.Header,
+                    Description = "Digite o token JWT"
                 };
 
-                c.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securitySchema);
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                options.AddSecurityDefinition("Bearer", securityScheme);
+
+                options.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
                 {
-                    { securitySchema, new string[] { } }
+                    [new OpenApiSecuritySchemeReference("Bearer", doc)] = new List<string>()
                 });
             });
 
