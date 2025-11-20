@@ -26,11 +26,18 @@ namespace SistemaTarefas.Data.Map
 
 
             builder.Property(e => e.MtraMtarId).HasColumnName("MTRA_MTAR_ID");
+
             builder.HasOne(d => d.MtraMtarNavigation)
+                .WithMany(p => p.ModelosTramite)
+                .HasForeignKey(d => d.MtraMtarId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_Modelos_Tramite_ModelosTarefa");
+
+            /*builder.HasOne(d => d.MtraMtarNavigation)
                 .WithMany(p => p.TramitesTiposTarefa)
                 .HasForeignKey(d => d.MtraMtarId)
                 .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("FK_Modelos_Tramite");
+                .HasConstraintName("FK_Modelos_Tramite");*/
 
             builder.Property(e => e.MtraUsuIdIndicacao).HasColumnName("MTRA_USU_ID_Indicacao").IsRequired(false);
             builder.Property(e => e.MtraUsuIdRevisor).HasColumnName("MTRA_USU_ID_Revisor").IsRequired(false);

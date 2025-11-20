@@ -16,7 +16,6 @@ public partial class ModelosTarefa
     [Column("MTAR_Descricao")]
     public string MtarDescricao { get; set; } = string.Empty;
 
-    public virtual ICollection<Tarefas> Tarefas { get; set; } = new List<Tarefas>();
-
+    public virtual ICollection<Tarefas> Tarefas { get; set; } = new List<Tarefas>();    
     public virtual ICollection<ModelosTramite> ModelosTramite { get; set; } = new List<ModelosTramite>();
 }

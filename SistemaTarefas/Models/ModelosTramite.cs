@@ -30,9 +30,10 @@ public partial class ModelosTramite
     public int MtraOrdem { get; set; }
 
     public virtual Tramites? TraMtar { get; set; } = null!;
-    public virtual ModelosTramite? MtraMtarNavigation { get; set; }
-
-    public virtual ICollection<ModelosTramite> TramitesTiposTarefa { get; set; } = new List<ModelosTramite>();
+    //public virtual ModelosTramite? MtraMtarNavigation { get; set; }
+    public virtual ModelosTarefa? MtraMtarNavigation { get; set; }
+    
+    //public virtual ICollection<ModelosTramite> TramitesTiposTarefa { get; set; } = new List<ModelosTramite>();
     public virtual ICollection<Tramites> Tramites { get; set; } = new List<Tramites>();
     public virtual Usuarios? MtraUsuIdIndicacaoNavigation { get; set; }
     public virtual Usuarios? MtraUsuIdResponsavelNavigation { get; set; }

@@ -35,7 +35,6 @@ namespace SistemaTarefas.Controllers
             _TramitesModelosTarefaRepositorio = TramitesModelosTarefaRepositorio;
             _mapper = mapper;
         }
-
         private static bool ValidaRequisicao(ModeloTramiteRequest modeloResquet, ModeloTramiteResponse resposta, bool verificaMtraMtarId = true)
         {
             try
