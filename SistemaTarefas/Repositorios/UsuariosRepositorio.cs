@@ -327,7 +327,7 @@ namespace SistemaTarefas.Repositorios
             {
                 ResponseModel resposta = new ResponseModel();
 
-                if (await IntegridadeReferencialUsuario(id, resposta))
+                if (!await IntegridadeReferencialUsuario(id, resposta))
                 {
                     return resposta;
                 }

@@ -261,11 +261,11 @@ namespace SistemaTarefas.Controllers
         [Authorize(Policy = "NivelAcesso1")]
         [HttpDelete("{idUsuario}")]
         [ProducesResponseType(typeof(List<ResponseModel>), 200)]
-        [ProducesResponseType(typeof(List<ResponseModel>), 400)]// BadRequest
-        [ProducesResponseType(typeof(List<ResponseModel>), 403)]// Forbid - Acesso Negado
-        [ProducesResponseType(typeof(List<ResponseModel>), 404)]// Registro não encontrado
-        [ProducesResponseType(typeof(List<ResponseModel>), 409)]// violação de regra ou integridade
-        [ProducesResponseType(typeof(List<ResponseModel>), 500)]// Exceção
+        [ProducesResponseType(typeof(List<ResponseModel>), 400)]
+        [ProducesResponseType(typeof(List<ResponseModel>), 403)]
+        [ProducesResponseType(typeof(List<ResponseModel>), 404)]
+        [ProducesResponseType(typeof(List<ResponseModel>), 409)]
+        [ProducesResponseType(typeof(List<ResponseModel>), 500)]
         public async Task<ActionResult<ResponseModel>> Apagar([FromRoute] int idUsuario)
         {
             try
@@ -303,11 +303,11 @@ namespace SistemaTarefas.Controllers
             }
         }
 
-        private static bool ValidarParametrosAcesso(string login, string senha, string novaSenha, string confirmacao, out string resposta, out string erroCode)
+        private static bool ValidarParametrosAcesso(bool trocarSenhaPeloAdm, string login, string senha, string novaSenha, string confirmacao, out string resposta, out string erroCode)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(senha))
+                if (string.IsNullOrWhiteSpace(login) || (!trocarSenhaPeloAdm && string.IsNullOrWhiteSpace(senha)))
                 {
                     resposta = "Informe o Login e a Senha.";
                     erroCode = "USUARIOS_LOGIN_SENHA";
@@ -353,7 +353,7 @@ namespace SistemaTarefas.Controllers
                     });
                 }
 
-                if (!ValidarParametrosAcesso(request.Login, request.Senha, request.NovaSenha ?? "", request.ConfirmacaoNovaSenha ?? "", out string resposta, out string erroCode))
+                if (!ValidarParametrosAcesso(trocarSenhaPeloAdm, request.Login, request.Senha, request.NovaSenha ?? "", request.ConfirmacaoNovaSenha ?? "", out string resposta, out string erroCode))
                 {
                     return Controladores.Retorno(this, new UsuarioAlterarSenhaResponse
                     {
@@ -403,7 +403,7 @@ namespace SistemaTarefas.Controllers
                     });
                 }
 
-                if (!ValidarParametrosAcesso(request.Login, request.Senha, request.NovaSenha ?? "", request.ConfirmacaoNovaSenha ?? "", out string resposta, out string erroCode))
+                if (!ValidarParametrosAcesso(false, request.Login, request.Senha, request.NovaSenha ?? "", request.ConfirmacaoNovaSenha ?? "", out string resposta, out string erroCode))
                 {
                     return Controladores.Retorno(this, new UsuarioLoginResponse
                     {
