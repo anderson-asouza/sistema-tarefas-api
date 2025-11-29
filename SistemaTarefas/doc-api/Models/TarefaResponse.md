@@ -1,0 +1,28 @@
+# TarefaResponse
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **tarId** | **Integer** |  | [optional] [default to null] |
+| **tarNomeTarefa** | **String** |  | [optional] [default to null] |
+| **tarDescricao** | **String** |  | [optional] [default to null] |
+| **tarDataComeco** | **Date** |  | [optional] [default to null] |
+| **tarDataFinalPrevista** | **Date** |  | [optional] [default to null] |
+| **tarDataFinal** | **Date** |  | [optional] [default to null] |
+| **tarStatus** | **String** |  | [optional] [default to null] |
+| **tarStatusDescricao** | **String** |  | [optional] [default to null] |
+| **tarMtarId** | **Integer** |  | [optional] [default to null] |
+| **mtarNome** | **String** |  | [optional] [default to null] |
+| **mtarDescricao** | **String** |  | [optional] [default to null] |
+| **tarUsuIdResponsavelTarefa** | **Integer** |  | [optional] [default to null] |
+| **usuNomeUsuarioResponsavelTarefa** | **String** |  | [optional] [default to null] |
+| **tarFlaId** | **Integer** |  | [optional] [default to null] |
+| **flaRotulo** | **String** |  | [optional] [default to null] |
+| **flaCor** | **String** |  | [optional] [default to null] |
+| **rm** | **String** |  | [optional] [default to null] |
+| **rc** | [**ResponseCode**](ResponseCode.md) |  | [optional] [default to null] |
+| **errorCode** | **String** |  | [optional] [default to null] |
+| **ok** | **Boolean** |  | [optional] [default to null] |
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
